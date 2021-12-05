@@ -1,10 +1,23 @@
+require('dotenv').config()
 const express = require('express')
+const mongoose = require('mongoose')
+
 
 //Database
 const database = require('./database')
 
 //Initialize
 const booky = express()
+
+//model 
+
+const bookModel = require('./databases/book')
+const authorModel = require('./databases/author')
+const publicationModel = require('./databases/publications')
+
+mongoose.connect(
+  process.env.MONGO_URL
+).then(()=>console.log("connection established"))
 
 //API of all books
 /*
